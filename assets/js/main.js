@@ -28,7 +28,7 @@ for (let i = 0; i < mailListOk.length; i++) {
                   alert('Ok!');
                   game.style.display = 'block';
             }
-            
+            alert = function () {};
       })
       
 }
