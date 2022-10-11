@@ -4,6 +4,8 @@
 // il gioco non si avvia finchè non c'è il login
 const game = document.querySelector ('.game');
 game.style.display = 'none';
+const gameButton = document.querySelector ('.genera');
+gameButton.style.display = 'none';
 
 // creo un array con le mail consentite
 const mailListOk = ['approved@mail.com', 'approved2@mail.com', 'approved3@mail.com'];
@@ -26,16 +28,33 @@ for (let i = 0; i < mailListOk.length; i++) {
             // altrimenti può giocare 
             else if ( userMail === mailListOk[i]){
                   alert('Ok!');
-                  game.style.display = 'block';
+                  game.style.display = 'flex';
+                  gameButton.style.display = 'block';
             }
             alert = function () {};
       })
       
+
 }
 
 
 /* Gioco dei dadi */
 // Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
+const computerResult = document.querySelector ('.computer')
+const userResult = document.querySelector ('.user')
+
+gameButton.addEventListener('click', function(){
+
+      function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+      }
+      console.log(getRandomInt(6));
+      
+      computerResult.append(getRandomInt(6))
+      userResult.append(getRandomInt(6))
+
+})
+
 // Stabilire il vincitore, in base a chi fa il punteggio più alto.
 
 /* Prima di partire a scrivere codice poniamoci qualche domanda: Che ci sia un array da qualche parte? Se dobbiamo confrontare qualcosa che "cosa" ci serve?
