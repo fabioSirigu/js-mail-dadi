@@ -10,8 +10,12 @@ const result = document.querySelector ('.result')
 result.style.display = 'none';
 
 // creo un array con le mail consentite
-const mailListOk = ['approved@mail.com', 'approved2@mail.com', 'approved3@mail.com'];
+const mailListOk = ['approved@mail.com', 
+'approved2@mail.com', 
+'approved3@mail.com'];
 console.log(mailListOk)
+
+let outIn = 'email errata, riprova..'
 
 for (let i = 0; i < mailListOk.length; i++) {
       console.log(mailListOk[i]);
@@ -24,18 +28,15 @@ for (let i = 0; i < mailListOk.length; i++) {
             console.log(userMail);
             
             // se la mail non è corretta non puo' giocare
-            if ( userMail !== mailListOk[i]) {
-                  alert('La tua mail non è nella lista! Prova con un altra mail!');
-            }
-            // altrimenti può giocare 
-            else if ( userMail === mailListOk[i]){
-                  alert('Ok!');
+            if ( userMail === mailListOk[i]) {
+                  outIn = 'che vinca il migliore!'
                   game.style.display = 'flex';
                   gameButton.style.display = 'block';
                   result.style.display = 'flex';
             }
-            alert = function () {};
-      })
+            document.getElementById('check_user').innerHTML = outIn;
+            }
+      )
 }
 
 /* Gioco dei dadi */
