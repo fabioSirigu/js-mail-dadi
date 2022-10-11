@@ -44,18 +44,31 @@ const computerResult = document.querySelector ('.computer')
 const userResult = document.querySelector ('.user')
 
 gameButton.addEventListener('click', function(){
-
+      
       function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
+            return Math.floor(Math.random() * max+1);
       }
       console.log(getRandomInt(6));
       
-      computerResult.append(getRandomInt(6))
-      userResult.append(getRandomInt(6))
+      computerResult.innerHTML = `${getRandomInt(6)}`;
+      userResult.innerHTML = `${getRandomInt(6)}`;
+      
+      // Stabilire il vincitore, in base a chi fa il punteggio più alto.
+      const result = document.querySelector ('.result')
 
+      if (computerResult > userResult) {
+            result.innerHTML = `Ha vinto il computer!`
+            console.log(result + ' computer')
+      } else if (computerResult < userResult) {
+            result.innerHTML = `Hai vinto!`
+            console.log(result + ' user');
+      } else {
+            result.innerHTML = `Pari!`
+            console.log(result + ' pari')
+      }
+      
 })
 
-// Stabilire il vincitore, in base a chi fa il punteggio più alto.
 
 /* Prima di partire a scrivere codice poniamoci qualche domanda: Che ci sia un array da qualche parte? Se dobbiamo confrontare qualcosa che "cosa" ci serve?
 Consigli del giorno:
