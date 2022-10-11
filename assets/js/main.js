@@ -6,6 +6,8 @@ const game = document.querySelector ('.game');
 game.style.display = 'none';
 const gameButton = document.querySelector ('.genera');
 gameButton.style.display = 'none';
+const result = document.querySelector ('.result')
+result.style.display = 'none';
 
 // creo un array con le mail consentite
 const mailListOk = ['approved@mail.com', 'approved2@mail.com', 'approved3@mail.com'];
@@ -30,18 +32,16 @@ for (let i = 0; i < mailListOk.length; i++) {
                   alert('Ok!');
                   game.style.display = 'flex';
                   gameButton.style.display = 'block';
+                  result.style.display = 'flex';
             }
             alert = function () {};
       })
-      
-
 }
-
 
 /* Gioco dei dadi */
 // Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
-const computerResult = document.querySelector ('.computer')
-const userResult = document.querySelector ('.user')
+const computerResult = document.querySelector ('.computer');
+const userResult = document.querySelector ('.user');
 
 gameButton.addEventListener('click', function(){
       
@@ -50,31 +50,43 @@ gameButton.addEventListener('click', function(){
       }
       console.log(getRandomInt(6));
       
-      computerResult.innerHTML = `${getRandomInt(6)}`;
-      userResult.innerHTML = `${getRandomInt(6)}`;
+      let computerNumber = getRandomInt(6);
+      let userNumber = getRandomInt(6);
+
+      computerResult.innerHTML = `${computerNumber}`;
+      userResult.innerHTML = `${userNumber}`;
+      
       
       // Stabilire il vincitore, in base a chi fa il punteggio più alto.
-      const result = document.querySelector ('.result')
+      
+      if (computerNumber > userNumber) {
+            result.innerHTML = `Ha vinto il computer!`;
+            result.style.background = "rgb(255,255,255)";
+            result.style.background = "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 32%)";
 
-      if (computerResult > userResult) {
-            result.innerHTML = `Ha vinto il computer!`
-            console.log(result + ' computer')
-      } else if (computerResult < userResult) {
-            result.innerHTML = `Hai vinto!`
-            console.log(result + ' user');
+            computerResult.style.background = "rgb(255,255,255)";
+            computerResult.style.background = "radial-gradient(circle, rgba(255,255,255,1) 4%, rgba(18,255,0,1) 93%)";
+
+            userResult.style.background = "rgb(255,255,255)";
+            userResult.style.background = "radial-gradient(circle, rgba(255,255,255,1) 4%, rgba(255,0,0,1) 93%)";
+      } else if (computerNumber < userNumber) {
+            result.innerHTML = `Hai vinto!`;
+            result.style.background = "rgb(255,255,255)";
+            result.style.background = "radial-gradient(circle, rgba(255,255,255,1) 4%, rgba(18,255,0,1) 93%)";
+
+            userResult.style.background = "rgb(255,255,255)";
+            userResult.style.background = "radial-gradient(circle, rgba(255,255,255,1) 4%, rgba(18,255,0,1) 93%)";
+
+            computerResult.style.background = "rgb(255,255,255)";
+            computerResult.style.background = "radial-gradient(circle, rgba(255,255,255,1) 4%, rgba(255,0,0,1) 93%)";
       } else {
             result.innerHTML = `Pari!`
-            console.log(result + ' pari')
+            result.style.background = "rgb(255,255,255)";
+            result.style.background = "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(241,255,0,1) 86%)";
+
+            userResult.style.background = "white";
+
+            computerResult.style.background = "white";
       }
       
 })
-
-
-/* Prima di partire a scrivere codice poniamoci qualche domanda: Che ci sia un array da qualche parte? Se dobbiamo confrontare qualcosa che "cosa" ci serve?
-Consigli del giorno:
-scriviamo sempre prima dei commenti in italiano per capire cosa vogliamo fare
-javascript non fa nulla da solo, dobbiamo dirgli noi cosa vogliamo fare
-si ma noi cosa vogliamo fare?
-torniamo a scrivere in italiano
-proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro programma così come lo faremmo "a mano"
- */
