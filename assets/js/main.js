@@ -13,22 +13,20 @@ result.style.display = 'none';
 const mailListOk = ['approved@mail.com', 
 'approved2@mail.com', 
 'approved3@mail.com'];
-console.log(mailListOk)
 
 let outIn = 'email errata, riprova..'
 
 for (let i = 0; i < mailListOk.length; i++) {
-      console.log(mailListOk[i]);
+      const emailOk = mailListOk[i];
 
       //recupero la mail inserita dall'utente con l'event listener
       const buttonCheck = document.querySelector ('button.btn');
       
       buttonCheck.addEventListener('click', function() {
             const userMail = document.querySelector ('input.form-control').value;
-            console.log(userMail);
             
             // se la mail non è corretta non puo' giocare
-            if ( userMail === mailListOk[i]) {
+            if ( userMail == emailOk) {
                   outIn = 'che vinca il migliore!'
                   game.style.display = 'flex';
                   gameButton.style.display = 'block';
